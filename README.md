@@ -1,4 +1,4 @@
-Wyrywanie podobieństw pomiędzy plikami
+Wykrywanie podobieństw pomiędzy plikami
 ===============
 
 Plik wejściowy
