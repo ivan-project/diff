@@ -4,6 +4,7 @@ Wyrywanie podobieństw pomiędzy plikami
 Plik wejściowy
 ---------------
 Plik wejściowy jest tekstem pozbawionym stopsłów oraz poddanym lematyzacji. Zbiór wyrazów tworzących zdanie znajduje się w osobnej linii.
+
 Przykładowy plik:
 
         {
@@ -14,6 +15,7 @@ Przykładowy plik:
 Plik wyjściowy
 ---------------
 Plik wyjściowy ma format JSON i zawiera numer identyfikacyjny porównywanego pliku, oraz listę podobnych do niego plików. W każdym rekordzie znajdują się następujące informacje: numer identyfkacyjny podobnego pliku, procentowe podobieństwo obu plików oraz lista z numerami podobnych linii.
+
 Przykładowy plik:
 
         {
