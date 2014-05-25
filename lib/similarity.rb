@@ -7,7 +7,7 @@ class Similarity
     @smilar_lines = 0
   end
 
-  def precentage_similarity
+  def precentage
     (100*smilar_lines)/all_lines
   end
 end

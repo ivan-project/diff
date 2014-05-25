@@ -14,10 +14,20 @@ Dir.glob('inputFiles/*.json') do |suspicious_file_path| #tu będzie połączenie
   documents << Diff.new(source_file_path, suspicious_file_path) if source_file_path != suspicious_file_path
 end
 
-
+similarFiles = []
 documents.each do |d|
-  p d.source_document.id.to_s + '->' + d.suspicious_document.id.to_s
-  p d.get_result
-  p d.similarity.precentage_similarity
-  p '------------'
+  result = d.get_result
+  similarFiles << result if !result.nil?
+end
+
+result = {
+    sourceFileId: documents.first.source_document.id,
+    similarFiles: similarFiles
+}
+
+
+puts JSON.pretty_generate(result)
+
+File.open(result_file_path,"w") do |f|
+  f.write(result.to_json)
 end
