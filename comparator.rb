@@ -1,30 +1,20 @@
 # encoding: utf-8
+require 'json'
 
 $LOAD_PATH << '.'
 project_root = File.dirname(File.absolute_path(__FILE__))
 Dir.glob(project_root + '/lib/*', &method(:require))
 
-raise Errors::BadCallArgumentsNumber unless ARGV.length == 2
+raise Errors::BadCallArgumentsNumber unless ARGV.length == 3
+
 source_file_path = ARGV[0]
-result_file_path = ARGV[1]
-raise Errors::NotAFile unless File.file?(source_file_path)
+suspicious_file_path = ARGV[1]
+result_file_path = ARGV[2]
+raise Errors::NotAFile unless File.file?(source_file_path) && File.file?(suspicious_file_path)
 
-documents = []
-Dir.glob('inputFiles/*.json') do |suspicious_file_path| #tu będzie połączenie z bazą danych
-  documents << Diff.new(source_file_path, suspicious_file_path) if source_file_path != suspicious_file_path
-end
+comparator = Diff.new(source_file_path, suspicious_file_path)
 
-similarFiles = []
-documents.each do |d|
-  result = d.get_result
-  similarFiles << result if !result.nil?
-end
-
-result = {
-    sourceFileId: documents.first.source_document.id,
-    similarFiles: similarFiles
-}
-
+result = comparator.get_result
 
 puts JSON.pretty_generate(result)
 
