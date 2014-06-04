@@ -1,9 +1,11 @@
 GEM
   specs:
     diffy (3.0.4)
+    similar_text (0.0.4)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   diffy
+  similar_text

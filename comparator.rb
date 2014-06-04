@@ -12,7 +12,8 @@ suspicious_file_path = ARGV[1]
 result_file_path = ARGV[2]
 raise Errors::NotAFile unless File.file?(source_file_path) && File.file?(suspicious_file_path)
 
-comparator = Diff.new(source_file_path, suspicious_file_path)
+# comparator = Diff.new(source_file_path, suspicious_file_path)
+comparator = Similar.new(source_file_path, suspicious_file_path)
 
 result = comparator.get_result
 
