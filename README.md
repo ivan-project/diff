@@ -49,3 +49,11 @@ Program pobiera kolejno linie z pierwszego pliku wejściowego i każdą z nich p
 
 Przykłady podobieństwa zdań
 ----------------------------
+Przy porównywaniu zdań istotna okazuje się kolejność wyrazów, w związku z czym zdania w plikach wejściowych powinny mieć wyrazy uszeregowane alfabetycznie.
+
+                "ala mieć bury kudłaty pies chodzić on długi spacer park".similar("ala mieć bury kudłaty pies chodzić on długi spacer park")  => 100.0
+                "ala mieć bury kudłaty pies chodzić on długi spacer park".similar("ala mieć bury kudłaty pies chodzić")  => 77.08333333333333
+                "ala mieć kot chodzić on długi spacer las".similar("ala mieć bury kudłaty pies chodzić on długi spacer park")  => 78.43137254901961
+                "ala mieć wielka pizza chodzić on długi spacer park".similar("ala mieć bury kudłaty pies chodzić on las")  => 59.79381443298969
+                "ala mieć wielki wredny kot".similar("magda posiadać wielki bury kot") => 68.96551724137932
+                "ala mieć wielki wredny kot".similar("wielki bury kot posiadać magda") => 44.827586206896555
