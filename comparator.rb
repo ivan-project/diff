@@ -17,7 +17,7 @@ comparator = Similar.new(source_file_path, suspicious_file_path)
 
 result = comparator.get_result
 
-puts JSON.pretty_generate(result)
+# puts JSON.pretty_generate(result)
 
 File.open(result_file_path,"w") do |f|
   f.write(result.to_json)
