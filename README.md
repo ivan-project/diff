@@ -6,6 +6,7 @@ Wywołanie programu
 Program działa pod wersją ruby 1.9.3, jako argumenty wowołania przyjmuje kolejno dwa pliki do porównania oraz ścieżkę do pliku w którym zapisze wynik.
 
 Przykładowe wywołanie programu:
+
         ruby1.9.3 comparator.rb inputFiles/a.txt inputFiles/b.txt outputFiles/a.txt
  
 Pliki wejściowe
