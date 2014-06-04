@@ -40,3 +40,12 @@ Przykładowy plik:
             }
           ]
         }
+
+
+Opis działania
+---------------
+Program pobiera kolejno linie z pierwszego pliku wejściowego i każdą z nich porównuje kolejno ze wszystkimi liniami drugiego pliku wejściowego. Zdania zawierające mniej niż 5 słów są pomijane. Zdania są uznawane jako podobne w przypadku podobieństwa 75% lub większego.
+
+
+Przykłady podobieństwa zdań
+----------------------------
