@@ -3,12 +3,13 @@ require 'similar_text'
 
 class Similar
   attr_reader :source_file_path, :suspicious_file_path, :similarity, :lines
-  attr_accessor :all_lines, :similar_lines
+  attr_accessor :all_lines, :similar_lines, :all_suspicious_lines
 
   def initialize(source_file_path_path, suspicious_file_path_path)
     @source_file_path = source_file_path_path
     @suspicious_file_path = suspicious_file_path_path
     @all_lines = 0
+    @all_suspicious_lines = count_lines(suspicious_file_path_path)
     @similar_lines = 0
     @lines = []
   end
@@ -19,23 +20,27 @@ class Similar
   end
 
   def precentage_similarity
-    (100*similar_lines)/all_lines
+    (100*similar_lines)/[all_lines, all_suspicious_lines].min
   end
 
 private
+  def count_lines(file_path)
+    File.foreach(file_path) {}
+    all_lines = $.
+  end
 
   def diff_documents
     File.foreach(source_file_path).with_index { |source_line, source_index|
       if source_line.split.size > 4
-        first_similar = true
+        # first_similar = true
         self.all_lines += 1
         File.foreach(suspicious_file_path).with_index { |suspicious_line, suspicious_index|
           if suspicious_line.split.size > 4
             if source_line.to_s.similar(suspicious_line.to_s) >= 75
-              if first_similar
+              # if first_similar
                 self.similar_lines +=1
                 first_similar = false
-              end
+              # end
               lines << { sourceLineId: source_index + 1, similarLineId: suspicious_index + 1}
             end
           end
