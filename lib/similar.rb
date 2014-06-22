@@ -27,11 +27,15 @@ private
   def diff_documents
     File.foreach(source_file_path).with_index { |source_line, source_index|
       if source_line.split.size > 4
+        first_similar = true
         self.all_lines += 1
         File.foreach(suspicious_file_path).with_index { |suspicious_line, suspicious_index|
           if suspicious_line.split.size > 4
             if source_line.to_s.similar(suspicious_line.to_s) >= 75
-              self.similar_lines +=1
+              if first_similar
+                self.similar_lines +=1
+                first_similar = false
+              end
               lines << { sourceLineId: source_index + 1, similarLineId: suspicious_index + 1}
             end
           end
